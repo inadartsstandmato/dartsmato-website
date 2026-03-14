@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INA DARTS STAND MATO | ダーツバー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="logo-bg.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #1a1714;
+    --bg-warm: #231f1a;
+    --bg-card: #2c2620;
+    --accent-orange: #e8833a;
+    --accent-gold: #d4a843;
+    --accent-red: #c94a3a;
+    --text-primary: #f0e8dc;
+    --text-secondary: #b5a897;
+    --text-muted: #8a7d6f;
+    --border: #3d362e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  /* ===== NOISE OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(26, 23, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-orange);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    width: 24px;
+    height: 2px;
+    background: var(--text-secondary);
+    transition: all 0.3s;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(232, 131, 58, 0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(201, 74, 58, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 20%, rgba(212, 168, 67, 0.06) 0%, transparent 50%);
+  }
+
+  /* Dart board decorative element */
+  .hero-dartboard {
+    position: absolute;
+    right: -120px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 3px solid var(--border);
+    opacity: 0.12;
+    animation: spin 120s linear infinite;
+  }
+
+  .hero-dartboard::before {
+    content: '';
+    position: absolute;
+    inset: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+  }
+
+  .hero-dartboard::after {
+    content: '';
+    position: absolute;
+    inset: 140px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-orange);
+    opacity: 0.5;
+  }
+
+  @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--accent-orange);
+    border: 1px solid rgba(232, 131, 58, 0.3);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease-out both;
+  }
+
+  .hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.8s 0.2s ease-out both;
+  }
+
+  .hero-title .mato {
+    display: block;
+    font-family: 'Dela Gothic One', cursive;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    color: var(--accent-orange);
+    -webkit-text-stroke: 1px rgba(232, 131, 58, 0.3);
+    text-shadow: 0 0 80px rgba(232, 131, 58, 0.2);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    letter-spacing: 0.1em;
+    animation: fadeUp 0.8s 0.4s ease-out both;
+  }
+
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.6s ease-out both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--accent-orange);
+    color: var(--bg-dark);
+  }
+
+  .btn-primary:hover {
+    background: #f09348;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(232, 131, 58, 0.3);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--text-secondary);
+    background: rgba(255,255,255,0.03);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SCROLL INDICATOR ===== */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-indicator .arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 1.5px solid var(--text-muted);
+    border-bottom: 1.5px solid var(--text-muted);
+    transform: rotate(45deg);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ===== SECTIONS SHARED ===== */
+  section {
+    padding: 6rem 2rem;
+  }
+
+  .section-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--accent-orange);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    max-width: 640px;
+  }
+
+  /* ===== ABOUT ===== */
+  #about {
+    background: var(--bg-warm);
+    position: relative;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+    background: var(--bg-card);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .about-visual-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-visual .dart-icon {
+    font-size: 5rem;
+    opacity: 0.6;
+  }
+
+  .about-visual-text {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .about-visual-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 131, 58, 0.15), transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .about-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .about-feature {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .about-feature-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(232, 131, 58, 0.1);
+    border: 1px solid rgba(232, 131, 58, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .about-feature h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-feature p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ===== MENU ===== */
+  #menu {
+    position: relative;
+  }
+
+  .menu-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .menu-tab {
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .menu-tab.active, .menu-tab:hover {
+    background: var(--accent-orange);
+    color: var(--bg-dark);
+    border-color: var(--accent-orange);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .menu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .menu-card:hover {
+    border-color: rgba(232, 131, 58, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .menu-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .menu-card .price {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    color: var(--accent-orange);
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  .menu-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .menu-category { display: none; }
+  .menu-category.active { display: grid; }
+
+  /* ===== PRICING ===== */
+  #pricing {
+    background: var(--bg-warm);
+  }
+
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(232, 131, 58, 0.3);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--accent-orange);
+  }
+
+  .pricing-card.featured::before {
+    content: 'おすすめ';
+    position: absolute;
+    top: 16px;
+    right: -30px;
+    background: var(--accent-orange);
+    color: var(--bg-dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 40px;
+    transform: rotate(45deg);
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .pricing-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .pricing-card .price-main {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-orange);
+    line-height: 1;
+    margin: 1rem 0 0.25rem;
+  }
+
+  .pricing-card .price-unit {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .pricing-card ul {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pricing-card li {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .pricing-card li::before {
+    content: '✓';
+    color: var(--accent-orange);
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  /* ===== SNS / FOOTER ===== */
+  .sns-section {
+    text-align: center;
+    padding: 5rem 2rem;
+    position: relative;
+  }
+
+  .sns-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  .sns-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .sns-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+
+  .sns-link:hover {
+    border-color: var(--accent-orange);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  }
+
+  .sns-link .icon {
+    font-size: 1.4rem;
+  }
+
+  footer {
+    background: var(--bg-warm);
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--accent-orange);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-address {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-copy {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(26, 23, 20, 0.95);
+      backdrop-filter: blur(12px);
+      padding: 1.5rem 2rem;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-visual {
+      aspect-ratio: 16/9;
+    }
+
+    section { padding: 4rem 1.5rem; }
+
+    .hero-dartboard { display: none; }
+
+    .pricing-cards {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* ===== PRICING MODE ===== */
+  .pricing-mode { display: block; }
+
+  /* ===== REVEAL ANIMATION ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo" style="text-decoration:none;">
+    <img src="logo-nav.png" alt="MATO - INA DARTS STAND" style="height:38px;display:block;">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">お店について</a></li>
+    <li><a href="#menu">メニュー</a></li>
+    <li><a href="#pricing">料金</a></li>
+    <li><a href="#sns">SNS</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-dartboard"></div>
+  <div class="hero-content">
+    <div class="hero-tag">DARTS BAR &amp; STAND</div>
+    <h1 class="hero-title">
+      INA DARTS STAND
+      <span class="mato">MATO</span>
+    </h1>
+    <p class="hero-sub">ダーツと美味しいお酒で、気軽に楽しいひとときを。</p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-primary">料金を見る</a>
+      <a href="#menu" class="btn btn-ghost">メニューを見る</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    SCROLL
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-container">
+    <div class="reveal">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">MATOってどんなお店？</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-visual-glow"></div>
+        <div class="about-visual-inner">
+          <img src="logo-dark.png" alt="MATO" style="width:65%;max-width:220px;opacity:0.35;">
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="section-desc">
+          「INA DARTS STAND MATO」は、初心者から上級者まで誰でも気軽に楽しめるダーツバーです。仲間とワイワイ盛り上がるもよし、一人でじっくり練習するもよし。美味しいドリンクとフードを片手に、あなたのペースでダーツを楽しんでください。
+        </p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">🎯</div>
+            <div>
+              <h4>初心者大歓迎</h4>
+              <p>スタッフが丁寧にルールや投げ方をレクチャー。初めてでも安心して楽しめます。</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🍸</div>
+            <div>
+              <h4>充実のドリンク</h4>
+              <p>クラフトビールやオリジナルカクテルなど、ダーツのお供にぴったりのラインナップ。</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🎉</div>
+            <div>
+              <h4>貸切・パーティーOK</h4>
+              <p>歓送迎会や誕生日パーティーなど、少人数から貸切のご相談も承ります。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-container">
+    <div class="reveal">
+      <div class="section-label">Menu</div>
+      <h2 class="section-title">ドリンク＆フード</h2>
+      <p class="section-desc">ドリンク・フードメニューは現在準備中です。詳細はLINEでお知らせします。</p>
+    </div>
+
+    <div class="menu-coming-soon reveal" style="
+      margin-top: 2.5rem;
+      background: var(--bg-card);
+      border: 1px dashed var(--border);
+      border-radius: 20px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+    ">
+      <div style="font-size: 3rem; margin-bottom: 1rem;">🍸</div>
+      <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-primary);">メニュー準備中</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
+        ドリンク・フードのメニューを鋭意準備中です。<br>
+        詳細はLINEまたはSNSでお知らせします。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-container">
+    <div class="reveal">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">料金システム</h2>
+      <p class="section-desc">お一人でもグループでもお得に楽しめるプランをご用意。</p>
+    </div>
+
+    <div class="menu-tabs reveal" style="margin-top: 2.5rem;">
+      <button class="menu-tab active" onclick="switchPricing('bar', this)">🍸 バー営業（金・土）</button>
+      <button class="menu-tab" onclick="switchPricing('darts', this)">🎯 ダーツ時間貸し（日〜木）</button>
+    </div>
+
+    <!-- Bar pricing -->
+    <div class="pricing-mode" id="mode-bar">
+      <div class="pricing-cards" style="margin-top: 2rem;">
+        <div class="pricing-card reveal">
+          <div class="pricing-icon">🎯</div>
+          <h3>1プレイ</h3>
+          <div class="price-main">¥200</div>
+          <div class="price-unit">/ 1ゲーム</div>
+          <ul>
+            <li>気軽にサクッと楽しみたい方に</li>
+            <li>グループでシェアもOK</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card featured reveal">
+          <div class="pricing-icon">🔥</div>
+          <h3>投げ放題</h3>
+          <div class="price-main">¥1,500</div>
+          <div class="price-unit">/ 1.5時間</div>
+          <ul>
+            <li>1.5時間ダーツ投げ放題</li>
+            <li>友達と来るならコレ！</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card reveal">
+          <div class="pricing-icon">🌙</div>
+          <h3>終日投げ放題</h3>
+          <div class="price-main">¥3,000</div>
+          <div class="price-unit">/ 終日</div>
+          <ul>
+            <li>その夜ずっと投げ放題</li>
+            <li>とことん練習したい方に</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;" class="reveal">※ チャージ料 ¥600 が別途かかります。</p>
+    </div>
+
+    <!-- Darts rental pricing -->
+    <div class="pricing-mode" id="mode-darts" style="display:none;">
+      <div class="pricing-cards" style="margin-top: 2rem;">
+        <div class="pricing-card reveal">
+          <div class="pricing-icon">🎯</div>
+          <h3>スペクトラム</h3>
+          <div class="price-main">¥980</div>
+          <div class="price-unit">/ 1時間</div>
+          <ul>
+            <li>オフライン専用機</li>
+            <li>シンプルに練習したい方に</li>
+            <li>チャージ料なし</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card featured reveal">
+          <div class="pricing-icon">🏆</div>
+          <h3>ダーツライブ3</h3>
+          <div class="price-main">¥1,480</div>
+          <div class="price-unit">/ 1時間</div>
+          <ul>
+            <li>ダーツライブ最新機種</li>
+            <li>全国プレイヤーとオンライン対戦</li>
+            <li>チャージ料なし</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card reveal" style="border-color: var(--accent-gold);">
+          <div class="pricing-icon">♾️</div>
+          <h3>通い放題サブスク</h3>
+          <div class="price-main" style="color: var(--accent-gold);">¥7,700</div>
+          <div class="price-unit">/ 月額</div>
+          <ul>
+            <li>日〜木 24H いつでも使い放題</li>
+            <li>3人までシェアOK</li>
+            <li>本人は必ず同伴が必要</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;" class="reveal">※ サブスクは本人が必ず来店してください。チャージ料はありません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SNS -->
+<section class="sns-section" id="sns">
+  <div class="section-container">
+    <div class="reveal">
+      <div class="section-label">Follow Us</div>
+      <h2 class="section-title">SNSで最新情報をチェック</h2>
+      <p class="section-desc" style="margin: 0 auto;">イベント情報や新メニューのお知らせはSNSで発信中！</p>
+    </div>
+    <div class="sns-links reveal">
+      <a class="sns-link" style="opacity:0.45;cursor:default;pointer-events:none;">
+        <span class="icon">📸</span>
+        Instagram
+        <span style="font-size:0.7rem;color:var(--text-muted);margin-left:0.25rem;">準備中</span>
+      </a>
+      <a class="sns-link" style="opacity:0.45;cursor:default;pointer-events:none;">
+        <span class="icon">🐦</span>
+        X (Twitter)
+        <span style="font-size:0.7rem;color:var(--text-muted);margin-left:0.25rem;">準備中</span>
+      </a>
+      <a href="https://lin.ee/UXe7w7L" class="sns-link" target="_blank" rel="noopener">
+        <span class="icon">💬</span>
+        LINE で友達追加
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">INA DARTS STAND MATO</div>
+  <div class="footer-address">
+    〒396-0011 長野県伊那市新井15 セントラルビル2F<br>
+    【バー営業】金・土　20:00〜翌2:00<br>
+    【ダーツ時間貸し】日〜木　24H営業
+  </div>
+  <div class="footer-copy">&copy; 2026 INA DARTS STAND MATO. All rights reserved.</div>
+</footer>
+
+<script>
+  // ===== Mobile Nav Toggle =====
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Close nav on link click
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // ===== Menu Tab Switch =====
+  function switchTab(tab) {
+    document.querySelectorAll('.menu-category').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.menu-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // ===== Pricing Mode Switch =====
+  function switchPricing(mode, btn) {
+    document.querySelectorAll('.pricing-mode').forEach(el => el.style.display = 'none');
+    document.getElementById('mode-' + mode).style.display = 'block';
+    btn.closest('.menu-tabs').querySelectorAll('.menu-tab').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ===== Scroll Reveal =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
