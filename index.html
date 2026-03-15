@@ -733,12 +733,13 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo" style="text-decoration:none;">
-    <img src="logo-nav.png" alt="MATO - INA DARTS STAND" style="height:38px;display:block;">
+    <img src="logo-sns-dark.png" alt="MATO - INA DARTS STAND" style="height:64px;display:block;">
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">お店について</a></li>
     <li><a href="#menu">メニュー</a></li>
     <li><a href="#pricing">料金</a></li>
+    <li><a href="#reservation">予約</a></li>
     <li><a href="#sns">SNS</a></li>
   </ul>
   <div class="nav-hamburger" id="hamburger" onclick="toggleNav()">
@@ -773,39 +774,41 @@
   <div class="section-container">
     <div class="reveal">
       <div class="section-label">About Us</div>
-      <h2 class="section-title">MATOってどんなお店？</h2>
+      <h2 class="section-title">MATOってどんな場所？</h2>
     </div>
     <div class="about-grid">
       <div class="about-visual reveal">
         <div class="about-visual-glow"></div>
         <div class="about-visual-inner">
-          <img src="logo-dark.png" alt="MATO" style="width:65%;max-width:220px;opacity:0.35;">
+          <img src="shop-photo.jpeg" alt="MATO 店内の様子" style="width:100%;height:100%;object-fit:cover;">
         </div>
       </div>
       <div class="reveal">
         <p class="section-desc">
-          「INA DARTS STAND MATO」は、初心者から上級者まで誰でも気軽に楽しめるダーツバーです。仲間とワイワイ盛り上がるもよし、一人でじっくり練習するもよし。美味しいドリンクとフードを片手に、あなたのペースでダーツを楽しんでください。
+          「INA DARTS STAND MATO」は、ダーツと酒を気軽に楽しめる場所です。<br>
+          週末は店主がゆるく営業するバー、平日は24時間使える無人のダーツスペース。<br>
+          「ちょっと投げたい」も「ただ飲みたい」も、どっちもありです。
         </p>
         <div class="about-features">
           <div class="about-feature">
-            <div class="about-feature-icon">🎯</div>
-            <div>
-              <h4>初心者大歓迎</h4>
-              <p>スタッフが丁寧にルールや投げ方をレクチャー。初めてでも安心して楽しめます。</p>
-            </div>
-          </div>
-          <div class="about-feature">
             <div class="about-feature-icon">🍸</div>
             <div>
-              <h4>充実のドリンク</h4>
-              <p>クラフトビールやオリジナルカクテルなど、ダーツのお供にぴったりのラインナップ。</p>
+              <h4>週末は「ゆるく飲む」有人営業</h4>
+              <p>週末は店主がゆるく営業しています。ダーツを持たない手ぶら来店も、一切投げない飲み専もOK。気負わず来てください。</p>
             </div>
           </div>
           <div class="about-feature">
-            <div class="about-feature-icon">🎉</div>
+            <div class="about-feature-icon">🎯</div>
             <div>
-              <h4>貸切・パーティーOK</h4>
-              <p>歓送迎会や誕生日パーティーなど、少人数から貸切のご相談も承ります。</p>
+              <h4>平日は24時間・無人で使える</h4>
+              <p>月額7,700円の投げ放題サブスクと、時間貸しの2つの使い方があります。公式LINEからスマホで鍵を開けて、誰とも顔を合わせずに入退店できるので、人目を気にせず自分のペースで練習に集中できます。</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🙌</div>
+            <div>
+              <h4>過ごし方は自由です</h4>
+              <p>一人で黙々と練習するもよし、友達とわいわい投げるもよし、ダーツに触らず飲むだけでもよし。使い方に正解はないので、自分のペースで過ごしてください。</p>
             </div>
           </div>
         </div>
@@ -851,7 +854,7 @@
     </div>
 
     <div class="menu-tabs reveal" style="margin-top: 2.5rem;">
-      <button class="menu-tab active" onclick="switchPricing('bar', this)">🍸 バー営業（金・土）</button>
+      <button class="menu-tab active" onclick="switchPricing('bar', this)">🍸 バー営業（金・土・祝前日）</button>
       <button class="menu-tab" onclick="switchPricing('darts', this)">🎯 ダーツ時間貸し（日〜木）</button>
     </div>
 
@@ -905,7 +908,6 @@
           <ul>
             <li>オフライン専用機</li>
             <li>シンプルに練習したい方に</li>
-            <li>チャージ料なし</li>
           </ul>
         </div>
 
@@ -917,7 +919,6 @@
           <ul>
             <li>ダーツライブ最新機種</li>
             <li>全国プレイヤーとオンライン対戦</li>
-            <li>チャージ料なし</li>
           </ul>
         </div>
 
@@ -928,13 +929,60 @@
           <div class="price-unit">/ 月額</div>
           <ul>
             <li>日〜木 24H いつでも使い放題</li>
-            <li>3人までシェアOK</li>
-            <li>本人は必ず同伴が必要</li>
+            <li>バー営業時チャージ無料</li>
           </ul>
         </div>
       </div>
-      <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;" class="reveal">※ サブスクは本人が必ず来店してください。チャージ料はありません。</p>
+      <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;" class="reveal">※ ご予約された方ご本人の来店が必要です。</p>
     </div>
+  </div>
+</section>
+
+
+<!-- RESERVATION -->
+<section id="reservation">
+  <div class="section-container">
+    <div class="reveal">
+      <div class="section-label">Reservation</div>
+      <h2 class="section-title">ご予約方法</h2>
+      <p class="section-desc">ダーツ時間貸し（日〜木）はLメンバーズカード経由でのご予約が必要です。</p>
+    </div>
+
+    <div class="reveal" style="margin-top: 3rem; max-width: 640px;">
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+        <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
+          <div style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--accent-orange); color: var(--bg-dark); display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.1rem;">1</div>
+          <div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">Lメンバーズカードに登録</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">初回のみ、Lメンバーズカードへの登録が必要です。</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
+          <div style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--accent-orange); color: var(--bg-dark); display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.1rem;">2</div>
+          <div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">予約する</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">Lメンバーズカードからご希望の日時で予約してください。</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: flex-start; gap: 1.25rem;">
+          <div style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; background: var(--accent-orange); color: var(--bg-dark); display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.1rem;">3</div>
+          <div>
+            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">PINコードで入室</h4>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7;">予約確定後、予約した時間帯のみ使えるPINコードが届きます。PINコードを入力して入室してください。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top: 2.5rem; text-align: center;">
+      <a href="#" class="btn btn-primary" style="font-size: 1rem; padding: 1.1rem 2.5rem;">予約はこちらから</a>
+    </div>
+
+    <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;" class="reveal">※ ご予約された方ご本人の来店が必要です。</p>
   </div>
 </section>
 
@@ -970,7 +1018,7 @@
   <div class="footer-logo">INA DARTS STAND MATO</div>
   <div class="footer-address">
     〒396-0011 長野県伊那市新井15 セントラルビル2F<br>
-    【バー営業】金・土　20:00〜翌2:00<br>
+    【バー営業】金・土・祝前日　20:00〜翌2:00<br>
     【ダーツ時間貸し】日〜木　24H営業
   </div>
   <div class="footer-copy">&copy; 2026 INA DARTS STAND MATO. All rights reserved.</div>

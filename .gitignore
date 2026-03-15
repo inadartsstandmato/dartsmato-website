@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+._*
+
+# 元データ・PSDフォルダ
+INA DARTS STAND MATO/
+
+# 未使用の元ロゴファイル（日本語名）
+MATO ロゴデータ.png
+MATO ロゴデータ SNS用.png
+
+# HEICファイル（未使用）
+*.heic
