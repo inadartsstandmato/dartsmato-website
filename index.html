@@ -498,6 +498,99 @@
   .menu-category { display: none; }
   .menu-category.active { display: grid; }
 
+  /* ===== MENU LIST ===== */
+  .menu-section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .menu-section-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+
+  .menu-section-card h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent-orange);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .menu-section-card h4 .price-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+  }
+
+  .menu-section-card .sub-heading {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    letter-spacing: 0.08em;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.2rem 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .menu-item .item-price {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: var(--accent-gold);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    margin-left: 1rem;
+  }
+
+  .menu-items-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.1rem 1rem;
+  }
+
+  @media (max-width: 480px) {
+    .menu-items-2col {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .menu-section-card .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1rem 0;
+  }
+
+  .menu-section-card .sub-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .menu-content { display: none; }
+  .menu-content.active { display: block; }
+
   /* ===== PRICING ===== */
   #pricing {
     background: var(--bg-warm);
@@ -859,24 +952,159 @@
     <div class="reveal">
       <div class="section-label">Menu</div>
       <h2 class="section-title">ドリンク＆フード</h2>
-      <p class="section-desc">ドリンク・フードメニューは現在準備中です。詳細はLINEでお知らせします。</p>
+      <p class="section-desc">バー営業時（金・土・祝前日）にご注文いただけます。</p>
     </div>
 
-    <div class="menu-coming-soon reveal" style="
-      margin-top: 2.5rem;
-      background: var(--bg-card);
-      border: 1px dashed var(--border);
-      border-radius: 20px;
-      padding: 3.5rem 2rem;
-      text-align: center;
-    ">
-      <div style="font-size: 3rem; margin-bottom: 1rem;">🍸</div>
-      <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-primary);">メニュー準備中</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8;">
-        ドリンク・フードのメニューを鋭意準備中です。<br>
-        詳細はLINEまたはSNSでお知らせします。
-      </p>
+    <div class="menu-tabs reveal" style="margin-top: 2rem;">
+      <button class="menu-tab active" onclick="switchMenu('drink', this)">🍸 ドリンク</button>
+      <button class="menu-tab" onclick="switchMenu('food', this)">🍽️ フード</button>
+      <button class="menu-tab" onclick="switchMenu('bottle', this)">🥃 ボトル</button>
     </div>
+
+    <!-- DRINK -->
+    <div class="menu-content active" id="menu-drink">
+      <div class="menu-section-grid reveal">
+
+        <!-- CHARGE / BEER / SHOT まとめカード -->
+        <div class="menu-section-card">
+          <h4>CHARGE / BEER</h4>
+          <div class="menu-item"><span>チャージ</span><span class="item-price">¥600</span></div>
+          <div class="menu-item"><span>生ビール</span><span class="item-price">¥600</span></div>
+          <div class="menu-item"><span>コロナ（瓶）</span><span class="item-price">¥700</span></div>
+          <div class="menu-item"><span>ハートランド（瓶）</span><span class="item-price">¥700</span></div>
+          <hr class="divider">
+          <div class="sub-label">SHOT</div>
+          <div class="menu-item"><span>テキーラ</span><span class="item-price">¥400</span></div>
+          <div class="menu-item"><span>テキーラ 3杯セット</span><span class="item-price">¥1,000</span></div>
+          <hr class="divider">
+          <div class="sub-label">NON-ALCOHOL</div>
+          <div class="menu-item"><span>ノンアルビール</span><span class="item-price">¥600</span></div>
+        </div>
+
+        <!-- COCKTAIL ¥600 -->
+        <div class="menu-section-card">
+          <h4>COCKTAIL <span class="price-label">¥600</span></h4>
+          <div class="sub-heading">Whiskey</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>ハイボール</span></div>
+            <div class="menu-item"><span>ウイスキージンジャー</span></div>
+            <div class="menu-item"><span>ウイスキーコーク</span></div>
+          </div>
+          <div class="sub-heading">Gin</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>ジントニック</span></div>
+            <div class="menu-item"><span>ジンリッキー</span></div>
+            <div class="menu-item"><span>ジンバック</span></div>
+          </div>
+          <div class="sub-heading">Vodka</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>ウォッカトニック</span></div>
+            <div class="menu-item"><span>モスコミュール</span></div>
+            <div class="menu-item"><span>スクリュードライバー</span></div>
+            <div class="menu-item"><span>ブルドッグ</span></div>
+          </div>
+          <div class="sub-heading">Rum</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>ラムコーク</span></div>
+            <div class="menu-item"><span>キューバリブレ</span></div>
+          </div>
+          <div class="sub-heading">Tequila</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>テキーラトニック</span></div>
+          </div>
+          <div class="sub-heading">Liqueur</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>カンパリソーダ</span></div>
+            <div class="menu-item"><span>カンパリオレンジ</span></div>
+            <div class="menu-item"><span>カシスソーダ</span></div>
+            <div class="menu-item"><span>カシスオレンジ</span></div>
+            <div class="menu-item"><span>カシスグレープフルーツ</span></div>
+            <div class="menu-item"><span>カルーアミルク</span></div>
+            <div class="menu-item"><span>ファジーネーブル</span></div>
+            <div class="menu-item"><span>アマレットジンジャー</span></div>
+            <div class="menu-item"><span>マリブコーク</span></div>
+          </div>
+        </div>
+
+        <!-- COCKTAIL ¥700 / SOFT DRINK まとめ -->
+        <div class="menu-section-card">
+          <h4>COCKTAIL <span class="price-label">¥700</span></h4>
+          <div class="sub-heading">Tequila</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>パローマ</span></div>
+            <div class="menu-item"><span>テキーラサンライズ</span></div>
+          </div>
+          <div class="sub-heading">Vodka</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>ソルティドッグ</span></div>
+          </div>
+          <div class="sub-heading">Liqueur</div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>アメリカーノ</span></div>
+          </div>
+          <hr class="divider">
+          <div class="sub-label">SOFT DRINK <span style="color: var(--text-muted); font-weight: 400;">¥500</span></div>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>コーラ</span></div>
+            <div class="menu-item"><span>ウーロン茶</span></div>
+            <div class="menu-item"><span>ジンジャーエール</span></div>
+            <div class="menu-item"><span>トニックウォーター</span></div>
+            <div class="menu-item"><span>オレンジジュース</span></div>
+            <div class="menu-item"><span>グレープフルーツジュース</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FOOD -->
+    <div class="menu-content" id="menu-food">
+      <div class="menu-section-grid reveal">
+
+        <div class="menu-section-card">
+          <h4>SNACKS <span class="price-label">¥600</span></h4>
+          <div class="menu-items-2col">
+            <div class="menu-item"><span>ミックスナッツ（塩味）</span></div>
+            <div class="menu-item"><span>黒トリュフポテトチップス</span></div>
+            <div class="menu-item"><span>テング ビーフジャーキー</span></div>
+            <div class="menu-item"><span>燻製チーズ</span></div>
+            <div class="menu-item"><span>ピクルス</span></div>
+            <div class="menu-item"><span>燻製うずら</span></div>
+          </div>
+          <hr class="divider">
+          <div class="sub-label">SNACKS <span style="color: var(--text-muted); font-weight: 400;">¥700</span></div>
+          <div class="menu-item"><span>ピクルス＆燻製うずら</span></div>
+        </div>
+
+        <div class="menu-section-card">
+          <h4>缶つま <span class="price-label">¥700</span></h4>
+          <div class="menu-item"><span>厚切りベーコン ブラックペッパー</span></div>
+          <div class="menu-item"><span>鶏ハラミ 直火焼</span></div>
+          <div class="menu-item"><span>豚ハラミ焼 スタミナガーリック</span></div>
+          <div class="menu-item"><span>ムール貝の白ワイン蒸し風</span></div>
+          <div class="menu-item"><span>ミックスオリーブ</span></div>
+          <div class="menu-item"><span>牛タン焼き ねぎ塩だれ</span></div>
+          <div class="menu-item"><span>豚肉の旨辛スパイス</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BOTTLE -->
+    <div class="menu-content" id="menu-bottle">
+      <div class="menu-section-grid reveal">
+
+        <div class="menu-section-card">
+          <h4>BOTTLE</h4>
+          <div class="menu-item"><span>いいちこ</span><span class="item-price">¥3,500</span></div>
+          <div class="menu-item"><span>角瓶</span><span class="item-price">¥4,500</span></div>
+          <div class="menu-item"><span>ワイン</span><span class="item-price">¥4,500</span></div>
+          <div class="menu-item"><span>ウイスキー各種</span><span class="item-price">要相談</span></div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1080,6 +1308,14 @@
     document.querySelectorAll('.menu-tab').forEach(el => el.classList.remove('active'));
     document.getElementById('tab-' + tab).classList.add('active');
     event.target.classList.add('active');
+  }
+
+  // ===== Menu Tab Switch =====
+  function switchMenu(tab, btn) {
+    document.querySelectorAll('.menu-content').forEach(el => el.classList.remove('active'));
+    document.getElementById('menu-' + tab).classList.add('active');
+    btn.closest('.menu-tabs').querySelectorAll('.menu-tab').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
   }
 
   // ===== Pricing Mode Switch =====
