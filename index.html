@@ -844,6 +844,84 @@
   /* ===== PRICING MODE ===== */
   .pricing-mode { display: block; }
 
+  /* ===== ACCESS INFO ===== */
+  .access-section { background: var(--bg-warm); }
+
+  .access-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .access-tab {
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .access-tab.active,
+  .access-tab:hover {
+    background: var(--accent-orange);
+    color: var(--bg-dark);
+    border-color: var(--accent-orange);
+  }
+
+  .access-content { display: none; }
+  .access-content.active { display: block; }
+
+  .access-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .access-table th {
+    text-align: left;
+    padding: 0.75rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-orange);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    vertical-align: top;
+  }
+
+  .access-table td {
+    padding: 0.75rem 0.75rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+    line-height: 1.6;
+    vertical-align: top;
+  }
+
+  .access-table .price-cell {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: var(--accent-gold);
+    white-space: nowrap;
+  }
+
+  .access-table .note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .access-table th,
+    .access-table td {
+      padding: 0.6rem 0.4rem;
+      font-size: 0.78rem;
+    }
+  }
+
   /* ===== REVEAL ANIMATION ===== */
   .reveal {
     opacity: 0;
@@ -1278,6 +1356,119 @@
   </div>
 </section>
 
+<!-- ACCESS INFO -->
+<section class="access-section" id="access">
+  <div class="section-container">
+    <div class="reveal">
+      <div class="section-label">Access</div>
+      <h2 class="section-title">近隣情報</h2>
+    </div>
+
+    <div class="access-tabs reveal">
+      <button class="access-tab active" onclick="switchAccess('parking', this)">🅿️ 近場の駐車場</button>
+      <button class="access-tab" onclick="switchAccess('hotel', this)">🏨 近場のホテル</button>
+    </div>
+
+    <div class="access-content" id="access-hotel">
+      <table class="access-table reveal">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>料金目安</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>街宿 Mille ミレ</td>
+            <td class="price-cell">約 ¥7,000</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>ホテル伊那</td>
+            <td class="price-cell">約 ¥8,000</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>島田屋ホテル</td>
+            <td class="price-cell">約 ¥9,000</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>伊那パークホテル</td>
+            <td class="price-cell">約 ¥9,000</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>あいや旅館</td>
+            <td class="price-cell">約 ¥10,000</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>エビスホテル</td>
+            <td class="price-cell">約 ¥10,000</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>ホテルWWJ</td>
+            <td class="price-cell">約 ¥12,000</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>花鳥屋旅館</td>
+            <td class="price-cell">約 ¥13,000</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>花月旅館</td>
+            <td class="price-cell">—</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="access-content active" id="access-parking">
+      <table class="access-table reveal">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>料金・条件</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>いなっせ</td>
+            <td>最初の1時間無料、以降1時間ごとに¥100<span class="note"><br>24H / 約232台</span></td>
+          </tr>
+          <tr>
+            <td>伊那市駅前駐車場</td>
+            <td>最初の1時間無料、以降1時間ごとに¥100<span class="note"><br>24H / 25台</span></td>
+          </tr>
+          <tr>
+            <td>通り町セントラルパーク</td>
+            <td>最初の1時間無料、以降1時間ごとに¥100<span class="note"><br>24H / 32台</span></td>
+          </tr>
+          <tr>
+            <td>タイムズ伊那荒井</td>
+            <td>60分 ¥100、最大 ¥500<span class="note"><br>17:00〜07:00 最大¥400 / 24H / 6台</span></td>
+          </tr>
+          <tr>
+            <td>タイムズ アルプス中央信用金庫</td>
+            <td>
+              通常 30分 ¥100<span class="note"><br>
+              【平日】9:00〜15:00 最大¥800 / 15:00〜09:00 最大¥300<br>
+              【土日祝】9:00〜15:00 最大¥300 / 15:00〜09:00 最大¥300</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--text-muted);" class="reveal">※ 料金は目安です。最新情報は各施設にご確認ください。</p>
+  </div>
+</section>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">INA DARTS STAND MATO</div>
@@ -1326,6 +1517,14 @@
     document.querySelectorAll('.pricing-mode').forEach(el => el.style.display = 'none');
     document.getElementById('mode-' + mode).style.display = 'block';
     btn.closest('.menu-tabs').querySelectorAll('.menu-tab').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // ===== Access Tab Switch =====
+  function switchAccess(tab, btn) {
+    document.querySelectorAll('.access-content').forEach(el => el.classList.remove('active'));
+    document.getElementById('access-' + tab).classList.add('active');
+    btn.closest('.access-tabs').querySelectorAll('.access-tab').forEach(el => el.classList.remove('active'));
     btn.classList.add('active');
   }
 
